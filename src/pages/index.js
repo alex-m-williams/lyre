@@ -52,6 +52,7 @@ export const pageQuery = graphql`
               html
             }
           }
+          genres
         }
       }
     }
@@ -59,9 +60,6 @@ export const pageQuery = graphql`
       edges {
         node {
           name
-          shortBio {
-            shortBio
-          }
           title
           heroImage: image {
             sizes(

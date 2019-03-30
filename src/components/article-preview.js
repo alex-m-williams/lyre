@@ -5,16 +5,19 @@ import Img from 'gatsby-image'
 import styles from './article-preview.module.css'
 
 export default ({ article }) => (
-  <div className={styles.preview}>
-    <Img alt="" sizes={article.heroImage.sizes} />
-    <h3 className={styles.previewTitle}>
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
-    <small>{article.publishDate}</small>
-    <p
-      dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
-      }}
-    />
-  </div>
+  <Link to={`/blog/${article.slug}`} className={styles.link}>
+    <div className={styles.preview}>
+      <Img alt="" sizes={article.heroImage.sizes} />
+      <h3 className={styles.previewTitle}>
+        {article.title}
+      </h3>
+      <small>{article.publishDate}</small>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: article.description.childMarkdownRemark.html,
+        }}
+      />
+      {article.genres && `Genres: ${article.genres.join(', ')}`}
+    </div>
+  </Link>
 )
